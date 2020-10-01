@@ -22,30 +22,54 @@ for linea in lineas:
 import math 
 
 try:
-    with open('RetosCodeAbbey/SortBubble.txt', 'r') as f:
+    with open('RetosCodeAbbey/MaximoComunDivisor.txt', 'r') as f:
         lineas= [linea.split() for linea in f]
         lineas = lineas[1:] #Obvia la primer linea
         print('Exito!')
         
 except:
     print("Prueba fallida")
-
+answer = []
 for linea in lineas:
-    lista = [int(x) for x in linea]
-    #tamaño = len(lista)
-j = 1
-contador = 1
-prueba = 1
-for i in range(len(lista)-1):
-    prueba+=1
-    #print(i)
-    if lista[i] > lista[j] :
-        t = lista[i]
-        lista[i] = lista[j]
-        lista[j] = t
-        j+=1
-        contador+=1
-    else:
-        j+=1
-print(str(contador), str(round( (prueba**2)/4) ))
+    mcd =0
+    res =0
+    num1,num2 = [int (x) for x in linea]
+    a = max(num1, num2)
+    b =min(num1, num2)
+    while b!=0:
+        res = b
+        b = a%b
+        a =res
+    #Formula para calcular el MCM
+    mcm = (num1*num2)/(res)
+    #aux = (mcd, mcm)
+    #answer.append((res, int(mcm)))
+    answer.append('('+str(res)+' '+str(int(mcm))+')')
+    #x = " ".join(map(str, answer))
+    #print(x)
+poto = " ".join(answer)
+print(poto)
+
+#Forma en como se publico en CodeAbbey 
+'''
+scores = int(input())
+answer = []
+
+for linea in range(scores):
+    mcd =0
+    res =0
+    num1,num2 = [int (x) for x in input().split()]
+    a = max(num1, num2)
+    b =min(num1, num2)
+    while b!=0:
+        res = b
+        b = a%b
+        a =res
+    #Formula para calcular el MCM
+    mcm = (num1*num2)/(res)
+    #aux = (mcd, mcm)
+    answer.append('('+str(res)+' '+str(int(mcm))+')') #Append() solo recibe un argumento, por eso la forma de guardar el dato, ya que agregamos son dos    #print(answer)
+poto = " ".join(answer)
+print(poto)
+'''
 
