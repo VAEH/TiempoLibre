@@ -22,7 +22,7 @@ for linea in lineas:
 import math 
 
 try:
-    with open('RetosCodeAbbey/MaximoComunDivisor.txt', 'r') as f:
+    with open('RetosCodeAbbey/SqareRoot.txt', 'r') as f:
         lineas= [linea.split() for linea in f]
         lineas = lineas[1:] #Obvia la primer linea
         print('Exito!')
@@ -30,46 +30,64 @@ try:
 except:
     print("Prueba fallida")
 answer = []
-for linea in lineas:
-    mcd =0
-    res =0
-    num1,num2 = [int (x) for x in linea]
-    a = max(num1, num2)
-    b =min(num1, num2)
-    while b!=0:
-        res = b
-        b = a%b
-        a =res
-    #Formula para calcular el MCM
-    mcm = (num1*num2)/(res)
-    #aux = (mcd, mcm)
-    #answer.append((res, int(mcm)))
-    answer.append('('+str(res)+' '+str(int(mcm))+')')
-    #x = " ".join(map(str, answer))
-    #print(x)
-poto = " ".join(answer)
-print(poto)
+def RaizCuadrada(valor, r):
+    d = xValor/r
+    raiz = (r + d)/2
+    r = raiz
+    return r
+#print(RaizCuadrada(2))
+#print(RaizCuadrada(150))
 
-#Forma en como se publico en CodeAbbey 
+for linea in lineas:
+    r=1
+    prueba =0
+    xValor, yItera = [int(x) for x in linea]
+    if yItera ==0:
+        answer.append('1')
+    else:
+        for i in range(yItera):
+            prueba = RaizCuadrada(xValor, r)
+            r = prueba
+        answer.append(str(prueba))
+print(*answer, sep= " ")
+
+'''
+#El problema de utilizar el while es cuando hay una resulato o una iteracciòn de cero, donde no se imprime dicho valor (1)
+#y en vez de 1 imprime es cero, por eso falla. Además si se utiliza junto con el condicional, no va a evaluar en la iteracción 0 (cero)
+    if yItera ==0:
+        print(1)
+    while yItera!=0:
+        yItera-=1
+        prueba = RaizCuadrada(xValor, r)
+        r = prueba
+        #print(d)
+    print(prueba)
+    #r =0
+'''
+
+#Forma en como se publca en CodeAbbey
 '''
 scores = int(input())
 answer = []
 
+def RaizCuadrada(valor, r):
+    d = xValor/r
+    raiz = (r + d)/2
+    r = raiz
+    return r
+
 for linea in range(scores):
-    mcd =0
-    res =0
-    num1,num2 = [int (x) for x in input().split()]
-    a = max(num1, num2)
-    b =min(num1, num2)
-    while b!=0:
-        res = b
-        b = a%b
-        a =res
-    #Formula para calcular el MCM
-    mcm = (num1*num2)/(res)
-    #aux = (mcd, mcm)
-    answer.append('('+str(res)+' '+str(int(mcm))+')') #Append() solo recibe un argumento, por eso la forma de guardar el dato, ya que agregamos son dos    #print(answer)
-poto = " ".join(answer)
-print(poto)
+    r=1
+    prueba =0
+    xValor, yItera = [int(x) for x in input().split()]
+    if yItera ==0:
+        answer.append('1')
+    else:
+        for i in range(yItera):
+            prueba = RaizCuadrada(xValor, r)
+            r = prueba
+        answer.append(str(prueba))
+print(*answer, sep= " ")
 '''
+
 
