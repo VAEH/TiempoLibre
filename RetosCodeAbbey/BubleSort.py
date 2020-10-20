@@ -46,18 +46,22 @@ except:
 for linea in lineas:
     lista = [int(x) for x in linea]
     #tamaño = len(lista)
-j = 1
+j = 1 #Posición
 contador = 1
 prueba = 1
+#El rango es (tamaño de la lista -1) porque va hacer la última posición de "j", de lo contrario generaria un error al compara la ultima posición con una posición de j que no existe
 for i in range(len(lista)-1):
-    prueba+=1
+    prueba+=1 #Cuenta el número de intercambios que se realizaron
     #print(i)
-    if lista[i] > lista[j] :
-        t = lista[i]
-        lista[i] = lista[j]
-        lista[j] = t
-        j+=1
+    #Realiza la comparación de ambas posiciones, luego modifica las posiciones de la lista
+    #Para que al mismo tiempo que se compara realice el ordenamiento
+    if lista[i] > lista[j] : 
+        #Las tres lineas posteriores modifican la lista
+        t = lista[i] #variable temporal
+        lista[i] = lista[j] #posición "i" toma el valor de la posición "j"
+        lista[j] = t #Toma el valor temporal
+        j+=1 #Incremeta 1 para la nueva posición
         contador+=1
-    else:
+    else: #Incrementa 1 para la nueva posición
         j+=1
-print(str(contador), str(round( (prueba**2)/4) ))
+print(str(contador), str(round( (prueba**2)/4) )) # Imprime número de pases desarrollados y total de intercambios
