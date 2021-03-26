@@ -1,4 +1,4 @@
-#eXPLICACIÓN DE if __name__ ==__main__
+#EXPLICACIÓN DE if __name__ ==__main__
 #import file_two
 from file_two import function_three
 print("File one __name__ is set to: {}" .format(__name__))
